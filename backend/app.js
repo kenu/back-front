@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var cors = require('cors');
 var app = express();
 
 const swaggerUi = require('swagger-ui-express');
@@ -25,6 +26,7 @@ const options = {
 const openapiSpec = swaggerJsdoc(options);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
