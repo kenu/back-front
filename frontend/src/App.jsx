@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
-import logo from './logo.svg'
+import Navbar from './components/Navbar';
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './views/Home'
+import About from './views/About'
 import './App.css'
 
 function App() {
@@ -14,42 +17,18 @@ function App() {
   useEffect(getHello);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          api called: <code id="greet"></code>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <BrowserRouter>
+    <div className="pt-20">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <p>
+        api called: <code id="greet"></code>
+      </p>
     </div>
+    </BrowserRouter>
   )
 }
 
